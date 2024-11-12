@@ -66,4 +66,4 @@ class Zombie:
         pass
 
     def get_bb(self):
-        return self.x - 75 - (self.dir * 10), self.y - 100, self.x + 75 - (self.dir * 10), self.y + 100
+        return self.x - (self.HP * 35) - (self.dir * 10), self.y - (self.HP * 50) + (50 * (self.HP - 2)), self.x + (self.HP * 35) - (self.dir * 10), self.y + (self.HP * 50) + (50 * (self.HP - 2))
