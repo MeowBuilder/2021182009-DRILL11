@@ -30,11 +30,11 @@ def init():
     boy = Boy()
     game_world.add_object(boy, 1)
 
-    enemy = Zombie()
-    game_world.add_object(enemy,1)
-    game_world.add_collision_pair('ball:zombie',None,enemy)
+    zombies = [ Zombie() for _ in range(5)]
+    game_world.add_objects(zombies,1)
+    for enemy in zombies:
+        game_world.add_collision_pair('ball:zombie',None,enemy)
 
-    global balls
     balls = [Ball(random.randint(100,1500),60,0) for _ in range(30)]
     game_world.add_objects(balls,1)
 
