@@ -160,9 +160,7 @@ class Boy:
             self.ball_count -= 1
             ball = Ball(self.x, self.y, self.face_dir*10)
             game_world.add_object(ball)
-   
-    def get_bb(self):
-        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
+            game_world.add_collision_pair('ball:zombie',ball, None)
 
     def handle_collision(self, group, other):
         if group == 'boy:ball':
@@ -170,4 +168,10 @@ class Boy:
         pass
     
     def get_bb(self):
-        return self.x - 20, self.y - 50, self.x + 20, self.y + 50
+        if self.state_machine.cur_state is Sleep:
+            if self.face_dir == 1:
+                return self.x - 70, self.y - 40, self.x + 20, self.y
+            else:
+                return self.x - 20, self.y - 40, self.x + 70, self.y
+        else:
+            return self.x - 20, self.y - 50, self.x + 20, self.y + 50
