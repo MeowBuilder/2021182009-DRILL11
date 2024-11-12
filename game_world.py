@@ -22,6 +22,8 @@ def remove_object(o):
     for layer in world:
         if o in layer:
             layer.remove(o)
+            remove_collision_object(o)
+            del o
             return
     raise ValueError('Cannot delete non existing object')
 
@@ -61,16 +63,6 @@ def remove_collision_object(o):
             pairs[0].remove(o)
         if o in pairs[1]:
             pairs[1].remove(o)
-
-def remove_object(o):
-    for layer in world:
-        if o in layer:
-            layer.remove(o)
-            remove_collision_object(o)
-            del o
-            return
-    raise ValueError('Cannot delete non existing object')
-
 
 def handle_collisions():
     for group, pairs in collision_pairs.items():

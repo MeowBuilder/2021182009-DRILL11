@@ -57,7 +57,7 @@ class Zombie:
 
     def handle_collision(self, group, other):
         if group == 'ball:zombie':
-            self.x -= RUN_SPEED_PPS * self.dir * game_framework.frame_time * 50
+            self.x += RUN_SPEED_PPS * other.velocity * game_framework.frame_time * 10
         pass
 
     def get_bb(self):
