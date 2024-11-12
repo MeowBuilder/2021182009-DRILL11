@@ -159,11 +159,13 @@ class Boy:
             self.ball_count -= 1
             ball = Ball(self.x, self.y, self.face_dir*10)
             game_world.add_object(ball)
-
+   
     def get_bb(self):
-        # fill here
-        pass
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
     def handle_collision(self, group, other):
         # fill here
         pass
+    
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
